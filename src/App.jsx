@@ -8,7 +8,7 @@ import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 import Certifications from "./sections/Certifications";
 import Contact from "./sections/Contact";
-
+import { useEffect } from "react";
 function App() {
  
   // SAFE: No direct DOM manipulation, so no need for useEffect here
