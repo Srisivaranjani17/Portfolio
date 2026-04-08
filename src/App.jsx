@@ -10,6 +10,32 @@ import Certifications from "./sections/Certifications";
 import Contact from "./sections/Contact";
 
 function App() {
+ 
+  // SAFE: No direct DOM manipulation, so no need for useEffect here
+
+  useEffect(() => {
+    // Disable right click
+    const handleContextMenu = (e) => e.preventDefault();
+    document.addEventListener("contextmenu", handleContextMenu);
+
+    // Disable dev tools keys
+    const handleKeyDown = (e) => {
+      if (e.key === "F12") e.preventDefault();
+      if (e.ctrlKey && e.shiftKey && e.key === "I") e.preventDefault();
+      if (e.ctrlKey && e.shiftKey && e.key === "J") e.preventDefault();
+      if (e.ctrlKey && e.key === "U") e.preventDefault();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+
+
   return (
     <div className="relative">
       <StarBackground />
