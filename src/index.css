@@ -54,3 +54,37 @@
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
+
+/* Hexagonal Skills Grid */
+.hex-shape {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-item {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.35s ease;
+}
+
+.hex-item:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+
+.hex-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hex-row + .hex-row {
+  margin-top: -22px;
+}
+
+@keyframes hexPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.hex-glow {
+  animation: hexPulse 3s ease-in-out infinite;
+}
