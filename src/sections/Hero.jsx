@@ -54,7 +54,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                        className="inline-flex items-center gap-1 p-1.5 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] mb-8 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+                        className="flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-start gap-1 p-1.5 rounded-2xl sm:rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] mb-8 shadow-[0_4px_30px_rgba(0,0,0,0.3)] max-w-full"
                     >
                         {[
                             { icon: FiBriefcase, text: "Full-Time Roles" },

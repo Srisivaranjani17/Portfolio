@@ -61,7 +61,7 @@ const DESKTOP_GRID_WIDTH = DESKTOP_MAX_COLUMNS * DESKTOP_STEP - HEX_GAP + DESKTO
 const HEX_W_MOBILE = 90;
 const HEX_GAP_MOBILE = 6;
 const HEX_OVERLAP_MOBILE = 18;
-const MOBILE_COLUMNS = 3;
+const MOBILE_COLUMNS = 2;
 const MOBILE_STEP = HEX_W_MOBILE + HEX_GAP_MOBILE;
 const MOBILE_GRID_WIDTH = MOBILE_COLUMNS * MOBILE_STEP - HEX_GAP_MOBILE + MOBILE_STEP / 2;
 
@@ -95,7 +95,7 @@ const HexItem = ({ skill, index, activeCategory }) => {
         >
             {/* Hex outer — category-colored border */}
             <div
-                className="hex-shape w-[90px] h-[100px] sm:w-[100px] sm:h-[110px] md:w-[115px] md:h-[125px] flex items-center justify-center"
+                className="hex-shape w-[90px] h-[100px] md:w-[115px] md:h-[125px] flex items-center justify-center"
                 style={{
                     background: isGlowing
                         ? `linear-gradient(135deg, ${catColor}, ${catColor}80)`
@@ -105,7 +105,7 @@ const HexItem = ({ skill, index, activeCategory }) => {
             >
                 {/* Inner hex fill */}
                 <div
-                    className="hex-shape w-[86px] h-[96px] sm:w-[96px] sm:h-[106px] md:w-[111px] md:h-[121px] flex flex-col items-center justify-center gap-1.5"
+                    className="hex-shape w-[86px] h-[96px] md:w-[111px] md:h-[121px] flex flex-col items-center justify-center gap-1.5"
                     style={{
                         background: isGlowing
                             ? `radial-gradient(circle at center, ${catColor}15 0%, #1a1a1a 70%)`
