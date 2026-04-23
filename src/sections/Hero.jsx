@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin, FaNodeJs, FaPython } from "react-icons/fa";
-import { FiBriefcase, FiCpu, FiTrendingUp } from "react-icons/fi";
+import { FiBriefcase, FiCpu, FiTrendingUp, FiDownload, FiArrowRight } from "react-icons/fi";
 import { SiJavascript, SiReact } from "react-icons/si";
 import Typewriter from "typewriter-effect";
 import heroAvatar from "../assets/hero-avatar-removebg-preview.png";
@@ -49,44 +49,74 @@ const Hero = () => {
                         and deliver real-world user value.
                     </p>
 
-                    <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
-                        <div className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-accent/60 hover:bg-white/10 transition-all duration-300">
-                            <FiBriefcase className="text-accent text-base" />
-                            <span className="text-xs sm:text-sm md:text-base text-text-secondary group-hover:text-text-primary transition-colors">
-                                Open to <span className="font-semibold text-text-primary">Full-Time Roles</span>
-                            </span>
-                        </div>
-                        <div className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-accent/60 hover:bg-white/10 transition-all duration-300">
-                            <FiCpu className="text-accent text-base" />
-                            <span className="text-xs sm:text-sm md:text-base text-text-secondary group-hover:text-text-primary transition-colors">
-                                AI Projects
-                            </span>
-                        </div>
-                        <div className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-accent/60 hover:bg-white/10 transition-all duration-300">
-                            <FiTrendingUp className="text-accent text-base" />
-                            <span className="text-xs sm:text-sm md:text-base text-text-secondary group-hover:text-text-primary transition-colors">
-                                Continuous Learner
-                            </span>
-                        </div>
-                    </div>
+                    {/* ── Status Bar ── */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        className="inline-flex items-center gap-1 p-1.5 rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] mb-8 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+                    >
+                        {[
+                            { icon: FiBriefcase, text: "Full-Time Roles" },
+                            { icon: FiCpu, text: "AI Projects" },
+                            { icon: FiTrendingUp, text: "Continuous Learner" },
+                        ].map(({ icon: ChipIcon, text }, idx) => (
+                            <div
+                                key={text}
+                                className="group relative flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full hover:bg-white/[0.06] transition-all duration-300 cursor-default"
+                            >
+                                {/* Active glow on hover */}
+                                <div className="absolute inset-0 rounded-full bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <ChipIcon className="relative z-10 text-accent text-sm" />
+                                <span className="relative z-10 text-xs sm:text-sm text-text-secondary group-hover:text-text-primary font-medium transition-colors duration-300 whitespace-nowrap">
+                                    {text}
+                                </span>
+                                {/* Separator dot between chips */}
+                                {idx < 2 && (
+                                    <span className="hidden sm:block absolute -right-0.5 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white/10" />
+                                )}
+                            </div>
+                        ))}
+                    </motion.div>
 
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    {/* ── CTA Buttons ── */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+                    >
+                        {/* Primary — Download CV */}
                         <a
                             href="/srisivaranjani-resume.pdf"
                             download
-                            className="w-full sm:w-auto text-center px-6 sm:px-8 py-3 bg-accent text-primary rounded-full font-bold text-base md:text-lg hover:bg-accent-hover transition-all shadow-[0_4px_14px_0_rgba(246,160,0,0.39)]"
+                            className="group relative w-full sm:w-auto overflow-hidden rounded-full"
                         >
-                            Download CV
+                            {/* Glow */}
+                            <div className="absolute inset-0 rounded-full bg-accent/25 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="relative flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 bg-accent text-primary rounded-full font-bold text-base md:text-lg shadow-[0_4px_20px_rgba(245,158,11,0.3)] group-hover:shadow-[0_8px_30px_rgba(245,158,11,0.45)] group-hover:bg-accent-hover transition-all duration-400">
+                                <FiDownload className="text-lg transition-transform duration-300 group-hover:-translate-y-0.5" />
+                                <span>Download CV</span>
+                            </div>
+                            {/* Shimmer sweep */}
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out pointer-events-none" />
                         </a>
-                        <Link
-                            to="contact"
-                            smooth={true}
-                            duration={500}
-                            className="w-full sm:w-auto text-center px-6 sm:px-8 py-3 bg-transparent border border-text-secondary text-text-primary rounded-full font-bold text-base md:text-lg hover:border-accent hover:text-accent transition-all cursor-pointer"
-                        >
-                            Contact Me
-                        </Link>
-                    </div>
+
+                        {/* Secondary — Let's Connect */}
+                        <div className="group relative w-full sm:w-auto">
+                            {/* Gradient border */}
+                            <div className="absolute -inset-[1px] rounded-full bg-gradient-to-r from-accent/40 via-white/15 to-accent/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <Link
+                                to="contact"
+                                smooth={true}
+                                duration={500}
+                                className="relative flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 bg-transparent border border-text-secondary/50 text-text-primary rounded-full font-bold text-base md:text-lg cursor-pointer transition-all duration-400 group-hover:border-transparent group-hover:bg-white/[0.05]"
+                            >
+                                <span>Let's Connect</span>
+                                <FiArrowRight className="text-lg text-text-secondary group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" />
+                            </Link>
+                        </div>
+                    </motion.div>
                 </motion.div >
 
                 {/* Right Side: 3D Avatar Image */}

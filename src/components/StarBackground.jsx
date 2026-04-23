@@ -1,10 +1,10 @@
 import { useRef, useEffect } from "react";
 
 const LAYERS = [
-  { count: 150, speed: 0.05, sizeMin: 0.8, sizeMax: 1.4, opacityMin: 0.2, opacityMax: 0.5, parallax: 0.01 },
-  { count: 100, speed: 0.12, sizeMin: 1.2, sizeMax: 2.2, opacityMin: 0.35, opacityMax: 0.7, parallax: 0.025 },
-  { count: 55, speed: 0.22, sizeMin: 1.8, sizeMax: 3.2, opacityMin: 0.55, opacityMax: 0.9, parallax: 0.05 },
-  { count: 24, speed: 0.38, sizeMin: 2.8, sizeMax: 4.5, opacityMin: 0.75, opacityMax: 1.0, parallax: 0.1 },
+  { count: 200, speed: 0.05, sizeMin: 1.0, sizeMax: 2.0, opacityMin: 0.35, opacityMax: 0.65, parallax: 0.01 },
+  { count: 130, speed: 0.12, sizeMin: 1.6, sizeMax: 2.8, opacityMin: 0.5, opacityMax: 0.8, parallax: 0.025 },
+  { count: 70, speed: 0.22, sizeMin: 2.2, sizeMax: 3.8, opacityMin: 0.65, opacityMax: 0.95, parallax: 0.05 },
+  { count: 35, speed: 0.38, sizeMin: 3.2, sizeMax: 5.5, opacityMin: 0.8, opacityMax: 1.0, parallax: 0.1 },
 ];
 
 function rand(min, max) {
@@ -127,7 +127,7 @@ export default function StarBackground() {
 
         // Twinkle
         const twinkle = Math.sin(time * s.twinkleSpeed + s.twinkleOffset);
-        const opacity = s.baseOpacity * (0.75 + 0.35 * twinkle);
+        const opacity = s.baseOpacity * (0.8 + 0.3 * twinkle);
 
         // Draw
         const drawX = s.x + px;
@@ -138,8 +138,8 @@ export default function StarBackground() {
         ctx.beginPath();
         ctx.arc(drawX, drawY, s.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${safeOpacity})`;
-        ctx.shadowColor = `rgba(255,255,255,${Math.min(0.9, safeOpacity)})`;
-        ctx.shadowBlur = s.size * 4;
+        ctx.shadowColor = `rgba(255,255,255,${Math.min(1, safeOpacity * 1.2)})`;
+        ctx.shadowBlur = s.size * 6;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
